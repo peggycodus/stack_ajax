@@ -1,0 +1,18 @@
+<p>ANSWER: <%= @answer.an_answer %></p>
+
+<p>
+  <%= form_for [@answerable, Answer.new] do |f| %>
+    <p>
+      <%= f.text_area :an_answer %>
+    </p>
+    <p><%= f.submit "add answer" %></p>
+  <% end %>
+</p>
+
+
+<p>
+  <b>Answers:</b>
+  <ul>
+    <%= render :partial => 'answers/answer', :collection => @question.answers %>
+  </ul>
+</p>

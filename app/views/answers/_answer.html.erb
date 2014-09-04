@@ -1,0 +1,11 @@
+<li class="answer" id="answer_<%= answer.id %>">
+  <div class="body">
+    <%= answer.an_answer %>
+    <%= link_to '(Reply)', new_answer_answer_path(answer), class: "new_reply", remote: true %>
+  </div>
+  <% unless answer.answers.empty? %>
+    <ul class="answer_list">
+        <%= render :partial => 'answers/answer', :collection => answer.answers %>
+    </ul>
+  <% end %>
+</li>
