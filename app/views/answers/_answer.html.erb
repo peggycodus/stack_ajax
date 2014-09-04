@@ -3,9 +3,7 @@
     <%= answer.an_answer %>
     <%= link_to '(Reply)', new_answer_answer_path(answer), class: "new_reply", remote: true %>
   </div>
-  <% unless answer.answers.empty? %>
-    <ul class="answer_list">
-        <%= render :partial => 'answers/answer', :collection => answer.answers %>
-    </ul>
-  <% end %>
+  <ul class="answer_list">
+      <%= render :partial => 'answers/answer', class: "recursive_replies", remote: true, :collection => answer.answers %>
+  </ul>
 </li>
