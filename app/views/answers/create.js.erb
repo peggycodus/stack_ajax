@@ -1,6 +1,7 @@
-//$('#new_answer').remove();
-//need to show the new reply w/o refresh
+
+
 $('#answer_<%= @answerable.id %>').children('.body').children('.new_answer').remove();
 // //$('#answers').append('<%#= j render(@answer) %>');
 $('#answer_<%= @answerable.id %>').children('.answer_list').append('<%= j render @answer %>');
 
+$('#answer_<%= @answerable.id %>').children('.body').children('.new_reply').show()
