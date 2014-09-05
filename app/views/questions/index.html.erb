@@ -2,12 +2,12 @@
     <div id="questions">
     <% Question.all.each do |question| %>
 
-        <p><a href="/questions/<%= question.id %>" target="_blank" %><%= question.a_question %></a>
+        <p><a href="/questions/<%= question.id %>" target="_blank", name = "question/<%= question.id %>" %><%= question.a_question %></a>
 
            <%= link_to "Edit", edit_question_path(question), :class => "btn btn-warning btn-xs" %>
 
            <% if current_user %>
-             <%= link_to "Answer", new_question_answer_path(question), id: "ques_index_answer",  :class => "btn btn-warning btn-xs" %>
+             <%= link_to "Answer", new_question_answer_path(question), id: "ques_index_answer",  :class => "btn btn-primary btn-xs" %>
            <% end %>
 
            Asked at: <%= question.created_at.strftime("%b %e, %l:%M %p")%>

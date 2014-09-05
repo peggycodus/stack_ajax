@@ -1,18 +1,36 @@
-<p>QUESTION: <%= @question.a_question %></p>
 
-<p>
-  <%= form_for [@answerable, Answer.new] do |f| %>
-    <p>
-      <%= f.text_area :an_answer %>
-    </p>
-    <p><%= f.submit "add answer" %></p>
-  <% end %>
-</p>
+<div class="md-col-8">
+  <table class='table'>
+    <tr>
+      <td>
+        <p>QUESTION: <%= @question.a_question %></p>
+      </td>
+      <td> <% if current_user %>
+             <%= link_to "Edit", edit_question_path(@question), id: "edit",  :class => "btn btn-primary btn-xs" %>
+           <% end %>
+      </td>
+      <td><% if current_user %>
+             <%= link_to "Delete", question_path(@question), id: "destroy",  :class => "btn btn-primary btn-xs" %>
+           <% end %>
+      </td>
+    </tr>
+  </table>
+
+  <tr>
+  <p>
+    <%= form_for [@answerable, Answer.new] do |f| %>
+      <p>
+        <%= f.text_area :an_answer %>
+      </p>
+      <p><%= f.submit "add answer" %></p>
+    <% end %>
+  </p>
 
 
-<p>
-  <b>Answers:</b>
-  <ul>
-    <%= render :partial => 'answers/answer', :collection => @question.answers %>
-  </ul>
-</p>
+  <p>
+    <b>Answers:</b>
+    <ul>
+      <%= render :partial => 'answers/answer', :collection => @question.answers %>
+    </ul>
+  </p>
+</div>
