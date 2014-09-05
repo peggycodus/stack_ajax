@@ -4,8 +4,18 @@ class QuestionsController < ApplicationController
   def index
     if params[:query].blank?
       @questions = Question.all
+      @answers = Answer.all
+
     else
-      @questions = Question.advanced_search(a_question: params[:query])
+    @questions = Question.advanced_search(a_question: params[:query])
+
+    end
+    if params[:answer_query].blank?
+      @answers = Answer.all
+
+    else
+      @answers = Answer.advanced_search(an_answer: params[:answer_query])
+
     end
   end
 

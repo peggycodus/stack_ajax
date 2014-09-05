@@ -1,7 +1,6 @@
 class AnswersController < ApplicationController
 
   def index
-    #questions = Question.all
     @answerable = find_answerable
     @answers = @answerable.answers
   end

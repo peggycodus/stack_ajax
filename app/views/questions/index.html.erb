@@ -5,7 +5,7 @@
 <%= form_tag questions_path, method: :get do %>
   <p>
     <%= text_field_tag :query, params[:query] %>
-    <%= submit_tag "Search", name: nil %>
+    <%= submit_tag "Search questions", name: nil %>
   </p>
 <% end %>
 <br>
@@ -22,6 +22,37 @@
          <% end %>
 
          Asked at: <%= question.created_at.strftime("%b %e, %l:%M %p")%>
+         <% end %>
+      </p>
+</div>
+
+</div>
+
+<div id="answer-search" class="row" >
+<div class="col-md-4">
+
+
+<%= form_tag questions_path, method: :get do %>
+  <p>
+    <%= text_field_tag :answer_query, params[:answer_query] %>
+    <%= submit_tag "Search answers", name: nil %>
+  </p>
+<% end %>
+<br>
+
+<div class= "answer-list col-md-8">
+  <% @answers.each do |answer| %>
+
+      <p><a href="/answers/<%= answer.id %>" target="_blank", name = "answer/<%= answer.id %>" %><%= answer.an_answer %></a>
+        <p><% question_id = answer.answerable_id %>
+            <%= Question.find(question_id).a_question %></p>
+
+
+         <% if current_user %>
+           <%= link_to "Answer", new_answer_answer_path(answer), id: "ques_index_answer",  :class => "btn btn-primary btn-xs" %>
+         <% end %>
+
+         Asked at: <%= answer.created_at.strftime("%b %e, %l:%M %p")%>
          <% end %>
       </p>
 </div>
