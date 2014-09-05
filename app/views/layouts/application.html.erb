@@ -23,7 +23,9 @@
   </nav>
 <body>
   <div class="container">
-    <%= flash[:notice] %>
+    <div class="alert">
+      <%= flash[:notice] %>
+    </div>
     <%= yield %><br/>
     <%= debug(params) %>
   </div>
