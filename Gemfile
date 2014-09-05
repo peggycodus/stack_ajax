@@ -13,6 +13,7 @@ gem 'simple_form'
 gem 'bcrypt'
 gem 'textacular', '~> 3.0'
 
+
 group :development do
   gem 'better_errors'
   gem 'binding_of_caller'

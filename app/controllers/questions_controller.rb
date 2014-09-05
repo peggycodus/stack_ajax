@@ -2,8 +2,11 @@ class QuestionsController < ApplicationController
   before_filter :authorize, only: [:show, :update, :destroy]
 
   def index
-    @questions = Question.all
-
+    if params[:query].blank?
+      @questions = Question.all
+    else
+      @questions = Question.advanced_search(a_question: params[:query])
+    end
   end
 
   def new
